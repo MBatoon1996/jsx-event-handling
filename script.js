@@ -54,11 +54,25 @@ var Counter = function (_React$Component) {
     return Counter;
 }(React.Component);
 
+var Link = function Link() {
+    var handleClick = function handleClick(e) {
+        e.preventDefault();
+        console.log('Link clicked.');
+    };
+
+    return React.createElement(
+        'a',
+        { href: 'altcademy.com', onClick: handleClick },
+        'Click me'
+    );
+};
+
 var App = function App() {
     return React.createElement(
         React.Fragment,
         null,
-        React.createElement(Counter, null)
+        React.createElement(Counter, null),
+        React.createElement(Link, null)
     );
 };
 
