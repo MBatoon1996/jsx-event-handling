@@ -18,34 +18,63 @@ var Counter = function (_React$Component) {
         _this.state = { count: 0 };
 
         // This binding ensures `this` refers to the class object in the callback
-        _this.addCount = _this.addCount.bind(_this);
+        //this.addCount = this.addCount.bind(this);
+        // only do this if we're not using arrow function in callback
         return _this;
     }
 
     _createClass(Counter, [{
         key: 'addCount',
-        value: function addCount() {
-            // add 1 to this.state.count
+        value: function addCount(amount) {
+            // Accept an amount input and add it to the count state
             this.setState({
-                count: this.state.count + 1
+                count: this.state.count + amount
             });
         }
     }, {
         key: 'render',
         value: function render() {
-            return React.createElement(
-                'div',
-                null,
+            var _this2 = this;
+
+            return (
+                /* Original +1 needed to bind addCount in constructor
+                <div>
+                    <h2>Count {this.state.count}</h2>
+                    <button onClick={this.addCount}>
+                        +1
+                    </button>
+                </div>
+                 */
                 React.createElement(
-                    'h2',
+                    'div',
                     null,
-                    'Count ',
-                    this.state.count
-                ),
-                React.createElement(
-                    'button',
-                    { onClick: this.addCount },
-                    '+1'
+                    React.createElement(
+                        'h2',
+                        null,
+                        'Count ',
+                        this.state.count
+                    ),
+                    React.createElement(
+                        'button',
+                        { onClick: function onClick() {
+                                return _this2.addCount(1);
+                            } },
+                        '+1'
+                    ),
+                    React.createElement(
+                        'button',
+                        { onClick: function onClick() {
+                                return _this2.addCount(2);
+                            } },
+                        '+2'
+                    ),
+                    React.createElement(
+                        'button',
+                        { onClick: function onClick() {
+                                return _this2.addCount(3);
+                            } },
+                        '+3'
+                    )
                 )
             );
         }
