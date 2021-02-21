@@ -96,12 +96,61 @@ var Link = function Link() {
     );
 };
 
+var ScrollLogger = function (_React$Component2) {
+    _inherits(ScrollLogger, _React$Component2);
+
+    function ScrollLogger(props) {
+        _classCallCheck(this, ScrollLogger);
+
+        var _this3 = _possibleConstructorReturn(this, (ScrollLogger.__proto__ || Object.getPrototypeOf(ScrollLogger)).call(this, props));
+
+        _this3.state = {
+            scrollY: 0
+        };
+
+        _this3.updateScrollY = _this3.updateScrollY.bind(_this3);
+        return _this3;
+    }
+
+    _createClass(ScrollLogger, [{
+        key: 'updateScrollY',
+        value: function updateScrollY(e) {
+            this.setState({ scrollY: Math.round(window.scrollY) });
+            this.scheduled = false;
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            window.addEventListener('scroll', this.updateScrollY);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            window.removeEventListener('scroll', this.updateScrollY);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'div',
+                { className: 'position-fixed bg-white p-3', style: { right: 0, top: 0 } },
+                'Scrolled: ',
+                this.state.scrollY,
+                'px'
+            );
+        }
+    }]);
+
+    return ScrollLogger;
+}(React.Component);
+
 var App = function App() {
     return React.createElement(
         React.Fragment,
         null,
         React.createElement(Counter, null),
-        React.createElement(Link, null)
+        React.createElement(Link, null),
+        React.createElement(ScrollLogger, null)
     );
 };
 
