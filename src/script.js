@@ -6,22 +6,38 @@ class Counter extends React.Component {
         this.state = { count: 0 };
 
         // This binding ensures `this` refers to the class object in the callback
-        this.addCount = this.addCount.bind(this);
+        //this.addCount = this.addCount.bind(this);
+        // only do this if we're not using arrow function in callback
     }
 
-    addCount () {
-        // add 1 to this.state.count
+    addCount (amount) {
+        // Accept an amount input and add it to the count state
         this.setState({
-            count: this.state.count + 1
+            count: this.state.count + amount
         });
     }
 
     render() {
         return (
+            /* Original +1 needed to bind addCount in constructor
             <div>
                 <h2>Count {this.state.count}</h2>
                 <button onClick={this.addCount}>
                     +1
+                </button>
+            </div>
+
+            */
+            <div>
+                <h2>Count {this.state.count}</h2>
+                <button onClick={() => this.addCount(1)}>
+                    +1
+                </button>
+                <button onClick={() => this.addCount(2)}>
+                    +2
+                </button>
+                <button onClick={() => this.addCount(3)}>
+                    +3
                 </button>
             </div>
         );
