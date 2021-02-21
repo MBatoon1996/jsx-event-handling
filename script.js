@@ -54,4 +54,12 @@ var Counter = function (_React$Component) {
     return Counter;
 }(React.Component);
 
-ReactDOM.render(React.createElement(Counter, null), document.getElementById('root'));
+var App = function App() {
+    return React.createElement(
+        React.Fragment,
+        null,
+        React.createElement(Counter, null)
+    );
+};
+
+ReactDOM.render(React.createElement(App, null), document.getElementById('root'));

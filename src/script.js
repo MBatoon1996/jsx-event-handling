@@ -28,7 +28,15 @@ class Counter extends React.Component {
     }
 }
 
+const App = () => {
+    return (
+        <React.Fragment>
+            <Counter />
+        </React.Fragment>
+    )
+}
+
 ReactDOM.render(
-    <Counter />,
+    <App />,
     document.getElementById('root')
 );
