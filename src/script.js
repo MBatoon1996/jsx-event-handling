@@ -28,10 +28,24 @@ class Counter extends React.Component {
     }
 }
 
+const Link = () => {
+    const handleClick = (e) => {
+        e.preventDefault();
+        console.log('Link clicked.');
+    }
+
+    return (
+        <a href="altcademy.com" onClick={handleClick}>
+            Click me
+        </a>
+    )
+}
+
 const App = () => {
     return (
         <React.Fragment>
             <Counter />
+            <Link />
         </React.Fragment>
     )
 }
